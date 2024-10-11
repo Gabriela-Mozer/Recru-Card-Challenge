@@ -1,3 +1,4 @@
+const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -5,12 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const ErrorNotificationPlugin = require("webpack-error-notification-plugin");
 
-
-
 const devMode = process.env.NODE_ENV !== "production";
 let slides = [];
-slides.push(addSlide('index'))
-
+slides.push(addSlide('index'));
 
 const browserSync = new BrowserSyncPlugin({
     host: "localhost",
@@ -18,20 +16,15 @@ const browserSync = new BrowserSyncPlugin({
     proxy: "http://localhost:8080/",
 });
 
-const isProduction = process.env.NODE_ENV === "production";
-
 const miniCss = new MiniCssExtractPlugin({
     filename: "css/[name].css",
 });
-
-const moduleReplacement = new webpack.HotModuleReplacementPlugin();
-const noEmit = new webpack.NoEmitOnErrorsPlugin();
 
 module.exports = {
     entry: [`${__dirname}/js/main.js`, `${__dirname}/scss/app.scss`],
 
     output: {
-        path: `${__dirname}/dist`,
+        path: path.resolve(__dirname, 'dist'),
         filename: "js/main.js",
     },
 
@@ -65,13 +58,9 @@ module.exports = {
                             publicPath: "../",
                         },
                     },
-
                     {
                         loader: "css-loader",
                         options: { sourceMap: devMode, url: true },
-                    },
-                    {
-                        loader: 'resolve-url-loader'
                     },
                     {
                         loader: "sass-loader",
@@ -87,18 +76,10 @@ module.exports = {
             },
             {
                 test: /\.(jp?g|png|gif|svg)$/i,
-                // type: 'asset/resource',
-                // generator: {
-                //     filename: 'images/[name][ext]'
-                // },
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "images/[name].[ext]",
-                        },
-                    }
-                ],
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name]-[hash][ext]', // Use [hash] to prevent conflicts
+                },
             },
         ],
     },
@@ -109,9 +90,6 @@ module.exports = {
         browserSync,
         miniCss,
         ...slides,
-        noEmit,
-        moduleReplacement,
-
     ],
 };
 
