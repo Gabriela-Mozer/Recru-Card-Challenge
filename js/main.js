@@ -52,11 +52,11 @@ function checkFormCompletion() {
 }
 
 monthSelect.addEventListener("change", function () {
-  checkMonthValidity, updateCardDate();
+  checkMonthValidity(), updateCardDate()
 });
 
 yearSelect.addEventListener("change", function () {
-  checkYearValidity, updateCardDate();
+  checkYearValidity(), updateCardDate()
 });
 
 monthSelect.addEventListener("input", function () {
@@ -68,8 +68,8 @@ yearSelect.addEventListener("input", function () {
 });
 
 function toggleExpireSpanClass() {
-  if ((monthSelect.value !== "Month" && yearSelect.value === "Year") || 
-  (monthSelect.value === "Month" && yearSelect.value !== "Year")) {
+  if ((monthSelect.value !== "Month" && yearSelect.value === "Year") ||
+   (monthSelect.value === "Month" && yearSelect.value !== "Year"))  {
     cardExpiredSpan.classList.add("active");
   } else {
     cardExpiredSpan.classList.remove("active");

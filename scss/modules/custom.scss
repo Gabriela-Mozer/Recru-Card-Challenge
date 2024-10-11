@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap");
 
 .container {
   display: flex;
@@ -6,7 +6,6 @@
   align-items: center;
   flex-direction: column;
   font-family: "Martian Mono", monospace;
-
 }
 
 .card {
@@ -79,12 +78,43 @@
   }
 }
 
-.card__form {
-  margin-top: 20px;
-  padding: 120px;
-  background-color: cornsilk;
-  border-radius: 10px;
+.card {
+  &__form {
+    margin-top: 20px;
+    padding: 120px;
+    background-color: rgb(241, 187, 205);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    &--headerno {
+      font-size: 12px;
+    }
+    &--headername {
+      font-size: 12px;
+    }
+    &--headerexpire {
+      font-size: 12px;
+    } 
+    &--headerCv {
+      font-size: 12px;
+    }
+    &--input {
+      font-size: 12px;
+      margin: 5px;
+    }
+    &--input{
+        font-size: 10px; 
+        margin: 5px;
+    }
+    &--label {
+      font-size: 10px;
+    }
+  }
 }
+#card__form--select__month,
+#card__form--select__year {
+  font-size: 12px;
+}
+
 
 .card {
   &__preview {
@@ -126,7 +156,6 @@
       right: 5px;
       bottom: 80px;
       font-size: 12px;
-
     }
     &--cvv {
       display: block;
@@ -137,7 +166,7 @@
     &--black {
       width: 300px;
       margin-top: 20px;
-      background-color:black;
+      background-color: black;
       padding: 15px;
     }
   }
@@ -145,10 +174,11 @@
 
 .error-message {
   color: red;
+  font-size: 10px;
 }
 
 .card__preview--holder {
-   font-size: 14px;
+  font-size: 14px;
 }
 
 .card__preview--holder-span {
@@ -156,7 +186,7 @@
 }
 
 .card__preview--holder-span.active {
-  border: 2px solid white; 
+  border: 2px solid white;
   border-radius: 10px;
 }
 
@@ -165,8 +195,8 @@
 }
 
 .card__preview--expire {
-    font-size: 8px;
-    margin-bottom: 4px;
+  font-size: 8px;
+  margin-bottom: 4px;
 }
 
 .card__preview--expire-date {
@@ -175,6 +205,6 @@
 }
 
 .card__preview--expire-span.active {
-  border: 2px solid white; 
+  border: 2px solid white;
   border-radius: 10px;
 }

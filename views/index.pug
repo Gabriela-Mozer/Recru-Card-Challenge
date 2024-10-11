@@ -12,16 +12,16 @@
             .card__reverse
                 .card__reverse--black
                 .card__reverse--precvv CVV: 
-                <span class="card__reverse--cvv"  id="cvvPreview">XXX</span>
+                span.card__reverse--cvv#cvvPreview XXX
     form.card__form
         .card__form--headerno Card Number
         input.card__form--input(type="text" placeholder="Card number" id="cardNumberInput")
         .card__form--headername Card Holder
         input.card__form--input(type="text" placeholder="Card name" id="cardNameInput")
-        label(for="card__form--select__month")
         .card__form--headerexpire Expires
-        input.card__form--input(placeholder="MM/YY" id="cardDateInput")
-        select#card__form--select__month 
+        input.card__form--input(placeholder="MM/YY" id="cardDateInput" readonly)
+        label.card__form--label(for="card__form--select__month") Month
+        select#card__form--select__month
             option Month
             option 01
             option 02
@@ -35,8 +35,8 @@
             option 10
             option 11
             option 12
-        label(for="card__form--select__year")
-        select#card__form--select__year 
+        label.card__form--label(for="card__form--select__year") Year
+        select#card__form--select__year
             option Year
             option 2025
             option 2026
